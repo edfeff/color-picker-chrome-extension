@@ -1,12 +1,16 @@
 body {
-    background: #f1f5f9;
+    background: #eee;
 }
+
 .wrapper {
     width: 300px;
     text-align: center;
+    padding-top: 10px;
 }
-.changeColorBtn {
-    width: 200px;
+
+.changeColorBtn,
+.clearColorBtn {
+    width: 100px;
     outline: none;
     border: none;
     border-radius: 2px;
@@ -14,19 +18,62 @@ body {
     background: #facc15;
     cursor: pointer;
 }
+
+.clearColorBtn {
+    background: #2e2e2d;
+    color: #fff;
+}
+
+.changeColorBtn:hover {
+    color: #fff;
+}
+
+.clearColorBtn:hover {
+    color: #facc15;
+}
+
 .colorGrid {
     display: inline-block;
     width: 20px;
     height: 20px;
-    border-radius: 2px;
+    border-radius: 3px;
 }
+
 .selectedColor {
     display: flex;
+    margin-top: 10px;
+    justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.selectedColor li {
+    list-style: none;
+    /* flex: 1; */
+    display: inline-block;
+    width: 100px;
+    min-width: 100px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    /* border-bottom: 1px solid black; */
+}
+
+.selectedColor li .colorValue {
+    background-color: #fff;
+    padding: 2px 5px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.selectedColor li .colorValue:hover {
+    color: #fff;
+    background: #2e2e2d;
 }
 
 .colorValue {
     margin-left: 5px;
     font-weight: bold;
 }
+
+.clearColorBtn {}
