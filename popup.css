@@ -1,5 +1,6 @@
 body {
     background: #eee;
+    position: relative;
 }
 
 .wrapper {
@@ -77,3 +78,24 @@ body {
 }
 
 .clearColorBtn {}
+
+
+.notice {
+    position: absolute;
+    padding: 2px 4px;
+    top: 0px;
+    right: 0px;
+    color: #fff;
+    opacity: 0.8;
+    background-color: black;
+    border-radius: 2px;
+    border: 1px solid black;
+    visibility: hidden;
+    text-align: center;
+}
+
+
+
+.notice.active {
+    visibility: visible;
+}

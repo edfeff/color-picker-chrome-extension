@@ -5,6 +5,18 @@ const colorPannel = document.querySelector('#colorPannel');
 const colorGrid = document.querySelector('.colorGrid');
 const colorValue = document.querySelector('.colorValue');
 
+const notice = document.querySelector('#notice');
+
+function noticeFunction(text) {
+    if (text) {
+        notice.innerText = text;
+        notice.classList.add('active')
+        setTimeout(() => {
+            notice.classList.remove('active')
+        }, 400);
+    }
+}
+
 function init() {
     chrome.storage.local.get('colors', (result) => {
         let colors = []
@@ -38,12 +50,7 @@ btn.addEventListener('click', async () => {
             const [data] = injectionResults;
             if (data.result) {
                 const color = data.result.sRGBHex;
-                console.log("debug click color=" + color)
-                // colorGrid.style.backgroundColor = color;
-                // colorValue.innerText = color;
-                // addColor(color);
                 chrome.storage.local.get('colors', (result) => {
-                    console.log("degbu get colors=", result)
                     let colors = []
                     if (result.colors) {
                         colors = result.colors
@@ -54,11 +61,10 @@ btn.addEventListener('click', async () => {
                     });
                 });
 
-                try {
-                    await navigator.clipboard.writeText(color);
-                } catch (err) {
-                    console.error(err);
-                }
+                navigator.clipboard.writeText(color)
+                    .then(() => {
+                        noticeFunction("Copy " + color)
+                    });
             }
         }
     );
@@ -81,7 +87,6 @@ chrome.storage.onChanged.addListener(
             const { colors: { newValue } } = changes;
             fillPannel(newValue);
         }
-        console.log('debug', changes, areaName)
     }
 )
 
@@ -102,15 +107,22 @@ function fillPannel(colors) {
         const value = document.createElement('span')
         value.classList.add('colorValue');
         value.innerText = v;
+        value.dataset['v'] = v;
 
         li.appendChild(color);
         li.appendChild(value);
         li.addEventListener("click", (env) => {
-            let text = env.target.innerText | ""
-            navigator.clipboard.writeText(text);
+            let text = env.target.dataset.v;
+            if (!text) {
+                text = env.target.innerText | ""
+            }
+            navigator.clipboard.writeText(text).then(() => {
+                noticeFunction("Copy " + text)
+            }).catch((e) => {
+                console.error(e)
+            });
         })
 
         colorPannel.appendChild(li);
     });
 }
-
