@@ -1,6 +1,6 @@
 {
     "name": "Colors Picker",
-    "description": "Picker colors form Page",
+    "description": "A useful and convenient tool can pick colors form web page.",
     "version": "1.1",
     "manifest_version": 3,
     "background": {
