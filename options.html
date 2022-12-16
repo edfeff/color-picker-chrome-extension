@@ -1,8 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+   <style>
+      /* * {
+         padding: 0;
+         margin: 0;
+      } */
+
+      body {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         height: 100vh;
+         background: linear-gradient(45deg, #2e2e2d, #facc15)
+      }
+
+      .container {
+         margin-block: auto;
+         padding: 20px;
+         background: #fff;
+         border-radius: 5px;
+      }
+
+      header {
+         padding: 5px 0px;
+         border-bottom: 1px solid;
+      }
+
+      header h1 {
+         font-weight: 300;
+      }
+
+      header span {
+         display: inline-block;
+         margin: 0;
+      }
+
+      header span.first {
+         padding: 5px 0 5px 5px;
+
+         background: #facc15;
+      }
+
+      header span.second {
+         padding: 5px 5px 5px 0px;
+         background: #2e2e2d;
+         color: #fff;
+      }
+   </style>
 </head>
+
 <body>
-   <h1>Here you can have your detailed UI</h1>
+   <div class="container">
+      <header>
+         <h1><span class="first">Colors</span><span class="second">Picker</span></h1>
+      </header>
+      <main>
+      </main>
+      <footer>
+         <p>Version: 1.0.1</p>
+         <p>Author: edfeff</p>
+         <p>Email: edfeff@163.com</p>
+         <p>Github: <a
+               href="https://github.com/edfeff/color-picker-chrome-extension">https://github.com/edfeff/color-picker-chrome-extension</a>
+         </p>
+      </footer>
+   </div>
 </body>
+
 </html>
